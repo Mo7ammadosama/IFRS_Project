@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Intelligent Food Recommendation App - Customer Signup</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --main-bg: #8cd39b;
+            --main-bg2: #4bb38a;
+        }
+
+        body {
+            background: #f4f7f5;
+        }
+
+        .header {
+            background: linear-gradient(45deg, var(--main-bg), var(--main-bg2));
+            padding: 25px;
+            text-align: center;
+            color: white;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .header img {
+            height: 70px;
+            margin-bottom: 10px;
+        }
+
+        .signup-box {
+            margin-top: -40px;
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+
+        .btn-main {
+            background: var(--main-bg2);
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn-main:hover {
+            background: #3a8b68;
+        }
+
+        .small-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <img src="../../static/customer/img/logo.png" alt="Logo">
+        <h2>Create Your Account</h2>
+        <p>Start your personalized food journey today</p>
+    </div>
+
+    <div class="container">
+        <div class="col-md-8 offset-md-2">
+
+            <div class="signup-box">
+
+                {% if error %}
+                    <div class="alert alert-danger text-center">{{ error }}</div>
+                {% endif %}
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <h5 class="mb-3 fw-bold">Basic Info</h5>
+
+                    <input name="name" class="form-control mb-3" placeholder="Full Name" required>
+
+                    <input type="email" name="email" class="form-control mb-3" placeholder="Email Address" required>
+
+                    <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
+
+
+                    <h5 class="mt-4 mb-3 fw-bold">Personal Data</h5>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <select name="gender" class="form-control" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <select name="goal" class="form-control" required>
+                                <option value="">Select Goal</option>
+                                <option value="loss">Weight Loss</option>
+                                <option value="gain">Weight Gain</option>
+                                <option value="maintain">Maintain Weight</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-4 mb-3">
+                            <input name="age" class="form-control" placeholder="Age">
+                        </div>
+
+                        <div class="col-4 mb-3">
+                            <input name="weight" class="form-control" placeholder="Weight (kg)">
+                        </div>
+
+                        <div class="col-4 mb-3">
+                            <input name="height" class="form-control" placeholder="Height (cm)">
+                        </div>
+                    </div>
+
+
+                    <h5 class="mt-4 mb-3 fw-bold">Food Preferences</h5>
+
+                    <textarea name="likes" class="form-control mb-3" placeholder="Foods you like..."></textarea>
+
+                    <textarea name="dislikes" class="form-control mb-3" placeholder="Foods you dislike..."></textarea>
+
+                    <textarea name="allergies" class="form-control mb-3" placeholder="Allergies (optional)"></textarea>
+
+
+                    <h5 class="mt-4 mb-3 fw-bold">Calories Preference</h5>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <input name="preferred_calories_min" class="form-control" placeholder="Min Calories">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <input name="preferred_calories_max" class="form-control" placeholder="Max Calories">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-main w-100 py-2 mt-2">Create Account</button>
+                </form>
+
+                <div class="small-link">
+                    <a href="/customer/login/" style="color:red">Already have an account? Login</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

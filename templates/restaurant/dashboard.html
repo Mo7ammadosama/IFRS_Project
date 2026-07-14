@@ -1,0 +1,38 @@
+{% extends 'restaurant/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="row text-center">
+    <div class="col-md-4 mb-4">
+        <div class="card shadow">
+            <div class="card-body">
+                <h4>Total Meals</h4>
+                <h2>{{ total_meals }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <a href="{% url 'meals_list' %}" class="text-decoration-none">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4>View Meals</h4>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <a href="{% url 'meal_add' %}" class="text-decoration-none">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4>Add New Meal</h4>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+:root {
+    --main-bg: #8cd39b;
+    --main-bg2: #4bb38a;
+}
+
+#header {
+    background: linear-gradient(45deg, var(--main-bg), var(--main-bg2)) !important;
+}
+
+#branding h1, #branding h1 a {
+    color: white !important;
+}
+
+.module caption {
+    background: var(--main-bg2) !important;
+    color: #fff !important;
+}
+
+div.breadcrumbs {
+    background: var(--main-bg) !important;
+}
+
+#footer, .footer {
+    background: #222 !important;
+    color: #aaa !important;
+    text-align: center;
+    padding: 10px;
+}
+
+#content h1 {
+    color: var(--main-bg2);
+}

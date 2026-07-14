@@ -1,0 +1,56 @@
+{% extends 'restaurant/base.html' %}
+{% block title %}Add Meal{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Add New Meal</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="mb-3"><label>Name</label>
+        <input name="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3"><label>Description</label>
+        <textarea name="description" class="form-control"></textarea>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-3"><label>Price</label>
+            <input name="price" class="form-control" required>
+        </div>
+
+        <div class="col-md-4 mb-3"><label>Calories</label>
+            <input name="calories" class="form-control">
+        </div>
+
+        <div class="col-md-4 mb-3"><label>Protein</label>
+            <input name="protein" class="form-control">
+        </div>
+		
+		<div class="mb-3">
+    <label>Meal Image</label>
+    <input type="file" name="image" class="form-control">
+</div>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3"><label>Carbs</label>
+            <input name="carbs" class="form-control">
+        </div>
+
+        <div class="col-md-6 mb-3"><label>Fat</label>
+            <input name="fat" class="form-control">
+        </div>
+    </div>
+
+    <div class="mb-3"><label>Allergens</label>
+        <textarea name="allergens" class="form-control"></textarea>
+    </div>
+
+    <button class="btn btn-success">Save Meal</button>
+</form>
+
+{% endblock %}

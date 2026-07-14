@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Intelligent Food Recommendation App - Restaurants</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --main-bg: #8cd39b;
+            --main-bg2: #4bb38a;
+        }
+
+        body {
+            background: #f3f6f4;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background: linear-gradient(45deg, var(--main-bg), var(--main-bg2));
+            padding: 12px;
+        }
+
+        .navbar-brand img {
+            height: 45px;
+        }
+
+        .menu-btn {
+            font-size: 26px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Sidebar Drawer */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            z-index: 2000;
+        }
+
+        .sidebar a {
+            padding: 15px 25px;
+            display: block;
+            font-size: 18px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .sidebar a:hover {
+            background-color: #e8f6ec;
+            color: #1d6f43;
+        }
+
+        /* Restaurant Card */
+        .restaurant-card {
+            border-radius: 14px;
+            background: white;
+            padding: 22px;
+            border: 1px solid #e3e3e3;
+            transition: 0.3s;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .visit-btn {
+            background: var(--main-bg2);
+            border: none;
+            color: white;
+        }
+    </style>
+
+    <script>
+        function openMenu() {
+            document.getElementById("sidebar").style.width = "260px";
+        }
+        function closeMenu() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+       <a onclick="closeMenu()" style="text-align:right; font-size:22px;">✖ Close</a>
+		
+		<center>
+<img src="../../static/customer/img/logo.png" width="25%"/>	</center>
+	
+        <a href="/customer/">🏠 Home</a>
+        <a href="/customer/restaurants/">🍽 Restaurants</a>
+        <a href="/customer/quiz/">🎯 Mood Quiz</a>
+        <a href="/customer/logout/" style="color:red;">🔓 Logout</a>
+    </div>
+
+       <!-- Navbar -->
+    <nav class="navbar navbar-custom shadow d-flex justify-content-between align-items-center">
+        <span class="menu-btn" onclick="openMenu()">☰</span>
+
+        <center>
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="../../static/customer/img/logo.png" alt="Logo">
+                <h6 class="ms-2 fw-bold text-white">Intelligent Food Recommendation App</h6>
+            </a>
+        </center>
+    </nav>
+
+    <div class="container mt-4">
+
+        <h3 class="text-center mb-4">Available Restaurants 🍽</h3>
+
+        <div class="row">
+
+            {% for rest in restaurants %}
+            <div class="col-md-4 mb-4">
+                <div class="restaurant-card">
+                    <h4 class="mb-1">{{ rest.name }}</h4>
+
+                    {% if rest.address %}
+                    <p class="text-muted small mb-1">📍 {{ rest.address }}</p>
+                    {% endif %}
+
+                    {% if rest.phone %}
+                    <p class="text-muted small mb-1">📞 {{ rest.phone }}</p>
+                    {% endif %}
+
+                    <hr>
+
+                    <a href="{% url 'customer_meals' rest.id %}" class="btn visit-btn w-100">
+                        View Meals 🍽
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center text-muted">No restaurants found.</p>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</body>
+</html>

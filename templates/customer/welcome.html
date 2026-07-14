@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Intelligent Food Recommendation App - Welcome</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --main-bg: #8cd39b;
+            --main-bg2: #4bb38a;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--main-bg), var(--main-bg2));
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-family: "Arial", sans-serif;
+        }
+
+        .welcome-box {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 35px 25px;
+            border-radius: 18px;
+            backdrop-filter: blur(8px);
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+        }
+
+        .welcome-box img {
+            width: 90px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .btn-main {
+            background: #ffffff;
+            color: var(--main-bg2);
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 25px;
+            width: 100%;
+            margin-bottom: 12px;
+            transition: 0.3s;
+        }
+
+        .btn-main:hover {
+            background: #e8ffe8;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 12px;
+            width: 100%;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-outline-custom:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .footer-text {
+            font-size: 13px;
+            opacity: 0.85;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="welcome-box">
+        <img src="../../static/customer/img/logo.png" alt="Logo">
+
+        <h2>Intelligent Food Recommendation System</h2>
+<br>
+        <a href="/customer/signup/" class="btn btn-main">Create an Account</a>
+        <a href="/customer/login/" class="btn btn-outline-custom">Sign In</a>
+<br><br>
+        <p class="footer-text">Healthy choices made easier 🌿</p>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+{% extends 'restaurant/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h2 class="mb-4">Edit Meal: {{ meal.name }}</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label>Name</label>
+                {{ form.name }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label>Description</label>
+                {{ form.description }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label>Price</label>
+                {{ form.price }}
+            </div>
+
+            <div class="col-md-4">
+                <label>Calories</label>
+                {{ form.calories }}
+            </div>
+
+            <div class="col-md-4">
+                <label>Protein</label>
+                {{ form.protein }}
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label>Carbs</label>
+                {{ form.carbs }}
+            </div>
+
+            <div class="col-md-6">
+                <label>Fat</label>
+                {{ form.fat }}
+            </div>
+			
+			
+			<br><br><br><br>
+
+<div class="mb-3">
+{% if meal.image %}
+   
+ <img src="{{ meal.image.url }}" width="150" height="150" >
+ 
+{% endif %}
+ 
+    <label>Image</label>
+<input type="file" name="image" class="form-control">
+</div>
+
+
+
+
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label>Allergens</label>
+                {{ form.allergens }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save Changes</button>
+
+    </form>
+
+</div>
+{% endblock %}

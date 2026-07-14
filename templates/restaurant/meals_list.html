@@ -1,0 +1,30 @@
+{% extends 'restaurant/base.html' %}
+{% block title %}Meals{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Meals List</h2>
+
+<div class="row">
+    {% for m in meals %}
+    <div class="col-md-4 mb-4">
+        <div class="card shadow">
+            <div class="card-body">
+			{% if m.image %}
+    <img src="{{ m.image.url }}" class="img-fluid mb-2" style="height:200px; object-fit:cover;">
+{% endif %}
+                <h4>{{ m.name }}</h4>
+                <p>{{ m.description }}</p>
+                <p><strong>Calories:</strong> {{ m.calories }}</p>
+                <p><strong>Price:</strong> ${{ m.price }}</p>
+				
+
+                <a href="{% url 'meal_edit' m.id %}" class="btn btn-success btn-sm">Edit</a>
+                <a href="{% url 'meal_delete' m.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No meals available.</p>
+    {% endfor %}
+</div>
+{% endblock %}
